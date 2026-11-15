@@ -9,6 +9,8 @@ import { CommandCopy } from "@/components/CommandCopy"
 
 type Props = { params: Promise<{ slug: string }> }
 
+export const dynamicParams = false
+
 export function generateStaticParams() { return comparisons.map(({ slug }) => ({ slug })) }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

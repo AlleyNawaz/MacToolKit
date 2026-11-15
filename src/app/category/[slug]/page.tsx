@@ -7,6 +7,8 @@ import { ToolCard } from "@/components/ToolCard"
 
 type Props = { params: Promise<{ slug: string }> }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() { return (await prisma.category.findMany({ select: { slug: true } })).map(({ slug }) => ({ slug })) }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params

@@ -29,6 +29,8 @@ async function getTool(slug: string) {
   return prisma.tool.findUnique({ where: { slug }, include: { category: true } })
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return (await prisma.tool.findMany({ select: { slug: true } })).map(({ slug }) => ({ slug }))
 }
