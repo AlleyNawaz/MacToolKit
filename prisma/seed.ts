@@ -1,15 +1,11 @@
 import { PrismaClient } from "@prisma/client"
 import { categoryCatalog, toolCatalog } from "../src/data/catalog"
+import { getToolDocumentation } from "../src/lib/tool-docs"
 
 const prisma = new PrismaClient()
 
 function documentation(tool: (typeof toolCatalog)[number]) {
-  return JSON.stringify({
-    overview: tool.description,
-    installation: tool.installKind === "manual"
-      ? "Follow the vendor's installation guide and confirm the installed version before automating the step."
-      : "Review this suggested command against the official installation guide before running it. Follow installer prompts and confirm the installed version.",
-  })
+  return JSON.stringify(getToolDocumentation(tool))
 }
 
 async function main() {
