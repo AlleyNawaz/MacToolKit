@@ -60,7 +60,7 @@ export default async function ToolPage({ params }: Props) {
     <section className="relative mt-8 overflow-hidden rounded-[2rem] border bg-card p-7 sm:p-10">
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-r from-sky-500/10 via-violet-500/10 to-fuchsia-500/10" />
       <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start">
-        <BrandMark name={tool.name} className="size-20 rounded-3xl text-xl shadow-xl sm:size-24 sm:text-2xl" />
+        <BrandMark name={tool.name} logo={tool.logo} className="size-20 rounded-3xl text-xl shadow-xl sm:size-24 sm:text-2xl" />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2 text-xs font-medium">
             <Link href={`/category/${tool.category.slug}`} className="rounded-full bg-sky-500/10 px-3 py-1 text-sky-600 dark:text-sky-400">{tool.category.name}</Link>

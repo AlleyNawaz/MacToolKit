@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation"
 import { Folder, Search, Wrench, X } from "lucide-react"
 import { BrandMark } from "@/components/BrandMark"
 
-type SearchTool = { name: string; slug: string; description: string; category: { name: string } }
+type SearchTool = { name: string; slug: string; description: string; category: { name: string }; logo?: string }
 type SearchCategory = { name: string; slug: string }
-type Result = { kind: "tool" | "category"; name: string; description: string; path: string }
+type Result = { kind: "tool" | "category"; name: string; description: string; path: string; logo?: string }
 
 export function SearchPalette({ tools, categories }: { tools: SearchTool[]; categories: SearchCategory[] }) {
   const [open, setOpen] = useState(false)
@@ -72,7 +72,7 @@ export function SearchPalette({ tools, categories }: { tools: SearchTool[]; cate
     const matchingTools = (value
       ? tools.filter((tool) => `${tool.name} ${tool.description} ${tool.category.name}`.toLowerCase().includes(value)).slice(0, 8)
       : tools.slice(0, 7)
-    ).map((tool) => ({ kind: "tool" as const, name: tool.name, description: `${tool.category.name} · ${tool.description}`, path: `/tool/${tool.slug}` }))
+    ).map((tool) => ({ kind: "tool" as const, name: tool.name, description: `${tool.category.name} · ${tool.description}`, path: `/tool/${tool.slug}`, logo: tool.logo }))
     const matchingCategories = value
       ? categories.filter((category) => category.name.toLowerCase().includes(value)).slice(0, 5).map((category) => ({ kind: "category" as const, name: category.name, description: "Category", path: `/category/${category.slug}` }))
       : []
@@ -131,7 +131,7 @@ export function SearchPalette({ tools, categories }: { tools: SearchTool[]; cate
               <p className="px-3 pb-2 pt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{query ? "Results" : "Suggested tools"}</p>
               {results.length ? results.map((item, index) => (
                 <button id={`search-result-${index}`} role="option" aria-selected={index === activeIndex} key={item.path} type="button" onMouseEnter={() => setActiveIndex(index)} onClick={() => go(item.path)} className={`flex w-full items-center gap-3 rounded-2xl p-3 text-left transition ${index === activeIndex ? "bg-muted" : "hover:bg-muted"}`}>
-                  {item.kind === "tool" ? <BrandMark name={item.name} className="size-10 rounded-xl text-xs" /> : <Folder className="size-10 shrink-0 rounded-xl bg-muted p-2.5 text-sky-500" />}
+                  {item.kind === "tool" ? <BrandMark name={item.name} logo={item.logo} className="size-10 rounded-xl text-xs" /> : <Folder className="size-10 shrink-0 rounded-xl bg-muted p-2.5 text-sky-500" />}
                   <span className="min-w-0 flex-1"><span className="block font-medium">{item.name}</span><span className="block truncate text-xs text-muted-foreground">{item.description}</span></span>
                 </button>
               )) : <div className="px-3 py-10 text-center text-sm text-muted-foreground">No matches. Try a shorter search.</div>}

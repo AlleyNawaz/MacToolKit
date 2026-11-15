@@ -3,12 +3,12 @@ import { ArrowUpRight } from "lucide-react"
 import { BrandMark } from "@/components/BrandMark"
 import { FavoriteButton } from "@/components/FavoriteButton"
 
-interface ToolCardProps { tool: { name: string; slug: string; description: string; difficulty?: string; category: { name: string } } }
+interface ToolCardProps { tool: { name: string; slug: string; description: string; difficulty?: string; category: { name: string }; logo?: string } }
 
 export function ToolCard({ tool }: ToolCardProps) {
   return (
     <article className="group relative flex min-h-64 flex-col rounded-3xl border bg-card/70 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-sky-500/5">
-      <div className="flex items-start justify-between gap-3"><BrandMark name={tool.name} className="size-13 text-sm" /><FavoriteButton slug={tool.slug} compact /></div>
+      <div className="flex items-start justify-between gap-3"><BrandMark name={tool.name} logo={tool.logo} className="size-13 text-sm" /><FavoriteButton slug={tool.slug} compact /></div>
       <div className="mt-5 flex flex-1 flex-col">
         <div className="text-xs font-medium text-muted-foreground">{tool.category.name}</div>
         <h3 className="mt-2 text-xl font-semibold tracking-tight"><Link href={`/tool/${tool.slug}`} className="after:absolute after:inset-0">{tool.name}</Link></h3>

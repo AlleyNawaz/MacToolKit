@@ -55,8 +55,8 @@ export default async function ComparisonPage({ params }: Props) {
   </div>
 }
 
-function ToolHead({ tool }: { tool: { name: string; slug: string; description: string } }) {
-  return <div className="border-l border-b p-4 sm:p-6"><BrandMark name={tool.name} className="size-12 rounded-xl text-xs" /><Link href={`/tool/${tool.slug}`} className="mt-3 block font-semibold hover:text-sky-500">{tool.name}</Link><p className="mt-1 text-xs leading-5 text-muted-foreground">{tool.description}</p></div>
+function ToolHead({ tool }: { tool: { name: string; slug: string; description: string; logo?: string } }) {
+  return <div className="border-l border-b p-4 sm:p-6"><BrandMark name={tool.name} logo={tool.logo} className="size-12 rounded-xl text-xs" /><Link href={`/tool/${tool.slug}`} className="mt-3 block font-semibold hover:text-sky-500">{tool.name}</Link><p className="mt-1 text-xs leading-5 text-muted-foreground">{tool.description}</p></div>
 }
 
 function Install({ tool }: { tool: { name: string; installCommand: string; installKind: string } }) {

@@ -27,11 +27,11 @@ async function main() {
   for (const tool of toolCatalog) {
     const data = {
       name: tool.name,
-      logo: tool.name.slice(0, 2).toUpperCase(),
+      logo: tool.logo,
       description: tool.description,
       developer: tool.name,
-      website: `https://www.google.com/search?q=${encodeURIComponent(`${tool.name} official`)}`,
-      github: null,
+      website: tool.website,
+      github: tool.github,
       installCommand: tool.command,
       installKind: tool.installKind,
       alternativeCommands: "",

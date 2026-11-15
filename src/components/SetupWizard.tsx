@@ -6,7 +6,7 @@ import { BrandMark } from "@/components/BrandMark"
 import { copyText } from "@/lib/clipboard"
 import { buildSetupScript, type SetupTool } from "@/lib/setup-script"
 
-type Tool = SetupTool & { description: string }
+type Tool = SetupTool & { description: string; logo?: string }
 
 const profiles: Record<string, { label: string; description: string; slugs: string[] }> = {
   web: { label: "Web developer", description: "Modern full-stack JavaScript and API work.", slugs: ["homebrew", "git", "nodejs", "pnpm", "visual-studio-code", "orbstack", "postman", "raycast"] },
@@ -85,7 +85,7 @@ export function SetupWizard({ tools }: { tools: Tool[] }) {
         <div className="grid gap-3 sm:grid-cols-2">{recommendations.map((tool) => {
           const checked = selected.includes(tool.slug)
           return <button key={tool.slug} type="button" aria-pressed={checked} onClick={() => toggle(tool.slug)} className={`flex items-start gap-3 rounded-2xl border p-4 text-left transition ${checked ? "border-sky-500/50 bg-sky-500/5" : "opacity-65 hover:opacity-100"}`}>
-            <BrandMark name={tool.name} className="size-11 rounded-xl text-xs" />
+            <BrandMark name={tool.name} logo={tool.logo} className="size-11 rounded-xl text-xs" />
             <span className="min-w-0 flex-1"><strong className="block text-sm">{tool.name}</strong><span className="mt-1 line-clamp-2 block text-xs leading-5 text-muted-foreground">{tool.description}</span>{tool.installKind === "manual" && <span className="mt-2 block text-xs font-semibold text-amber-600 dark:text-amber-400">Manual step</span>}</span>
             <span className={`grid size-5 shrink-0 place-items-center rounded-md border ${checked ? "border-sky-500 bg-sky-500 text-white" : "border-muted-foreground/50"}`}>{checked && <Check className="size-3" />}</span>
           </button>

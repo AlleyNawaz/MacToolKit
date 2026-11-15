@@ -8,7 +8,7 @@ import { PrimaryNav } from "@/components/layout/PrimaryNav"
 
 export async function Navbar() {
   const [tools, categories] = await Promise.all([
-    prisma.tool.findMany({ select: { name: true, slug: true, description: true, category: { select: { name: true } } }, orderBy: { name: "asc" } }),
+    prisma.tool.findMany({ select: { name: true, slug: true, description: true, logo: true, category: { select: { name: true } } }, orderBy: { name: "asc" } }),
     prisma.category.findMany({ select: { name: true, slug: true }, orderBy: { name: "asc" } }),
   ])
 

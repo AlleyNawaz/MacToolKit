@@ -6,7 +6,7 @@ import { Heart, Search } from "lucide-react"
 import { ToolCard } from "@/components/ToolCard"
 import { favoritesEvent, favoritesKey, readFavorites } from "@/lib/favorites"
 
-type Tool = { id: string; name: string; slug: string; description: string; difficulty: string; category: { name: string } }
+type Tool = { id: string; name: string; slug: string; description: string; difficulty: string; logo?: string; category: { name: string } }
 export function FavoritesGrid({ tools }: { tools: Tool[] }) {
   const [slugs, setSlugs] = useState<string[] | null>(null)
   useEffect(() => {

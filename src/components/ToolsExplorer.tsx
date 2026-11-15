@@ -4,7 +4,7 @@ import { useMemo, useState } from "react"
 import { Search, SlidersHorizontal } from "lucide-react"
 import { ToolCard } from "@/components/ToolCard"
 
-type Tool = { id: string; name: string; slug: string; description: string; difficulty: string; tags: string; installCommand: string; category: { name: string; slug: string } }
+type Tool = { id: string; name: string; slug: string; description: string; difficulty: string; tags: string; installCommand: string; logo?: string; category: { name: string; slug: string } }
 
 export function ToolsExplorer({ tools, categories, initialCategory = "all" }: { tools: Tool[]; categories: { name: string; slug: string }[]; initialCategory?: string }) {
   const [query, setQuery] = useState("")
