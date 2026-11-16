@@ -139,9 +139,6 @@ export default async function ToolPage({ params }: Props) {
               <span className={`rounded-full px-3 py-1 font-semibold ${isPaid ? "bg-amber-500/10 text-amber-600 dark:text-amber-400" : isFreemium ? "bg-purple-500/10 text-purple-600 dark:text-purple-400" : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"}`}>
                 {priceModel}
               </span>
-              <span className="hidden items-center gap-1 rounded-full border bg-background/60 px-3 py-1 text-muted-foreground sm:inline-flex">
-                <Cpu className="size-3" /> Apple Silicon & Intel
-              </span>
             </div>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{tool.name}</h1>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-muted-foreground">{docs.overview}</p>
@@ -155,9 +152,6 @@ export default async function ToolPage({ params }: Props) {
                   <GitBranch className="size-4" /> Source code
                 </a>
               )}
-              <a href="#installation" className="inline-flex h-11 items-center gap-2 rounded-full border bg-background px-5 text-sm font-medium text-sky-600 hover:bg-muted dark:text-sky-400">
-                <Terminal className="size-4" /> Installation command
-              </a>
             </div>
           </div>
         </div>
@@ -185,11 +179,10 @@ export default async function ToolPage({ params }: Props) {
 
           {/* Key Benefits */}
           {docs.benefits.length > 0 && (
-            <section className="space-y-5">
+            <section className="space-y-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-500">WHY CHOOSE {tool.name.toUpperCase()}</p>
-                <h2 className="mt-1.5 text-3xl font-semibold tracking-tight">Key Benefits & Advantages</h2>
-                <p className="mt-2 text-muted-foreground">What makes {tool.name} stand out for macOS workflows.</p>
+                <h2 className="text-2xl font-semibold tracking-tight">Key benefits</h2>
+                <p className="mt-1 text-sm text-muted-foreground">Why developers and teams choose {tool.name}.</p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 {docs.benefits.map((benefit, index) => {
@@ -210,21 +203,20 @@ export default async function ToolPage({ params }: Props) {
 
           {/* How to Use / Getting Started */}
           {docs.howToUse.length > 0 && (
-            <section className="space-y-6 border-t pt-10">
+            <section className="space-y-4 border-t pt-10">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-500">PRACTICAL GUIDE</p>
-                <h2 className="mt-1.5 text-3xl font-semibold tracking-tight">How to Use & Getting Started</h2>
-                <p className="mt-2 text-muted-foreground">Step-by-step walkthrough to get the most out of {tool.name} on Mac.</p>
+                <h2 className="text-2xl font-semibold tracking-tight">How to use</h2>
+                <p className="mt-1 text-sm text-muted-foreground">Setup walkthrough and common commands.</p>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {docs.howToUse.map((step) => (
-                  <div key={step.step} className="flex gap-4 rounded-2xl border bg-card p-5 sm:p-6">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-2xl bg-foreground text-sm font-bold text-background">
+                  <div key={step.step} className="flex gap-4 rounded-2xl border bg-card p-5">
+                    <span className="grid size-8 shrink-0 place-items-center rounded-xl bg-foreground text-xs font-bold text-background">
                       {step.step}
                     </span>
                     <div className="pt-0.5">
-                      <h3 className="font-semibold text-foreground">{step.title}</h3>
-                      <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{step.description}</p>
+                      <h3 className="font-semibold text-foreground text-sm">{step.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground">{step.description}</p>
                     </div>
                   </div>
                 ))}
@@ -234,10 +226,9 @@ export default async function ToolPage({ params }: Props) {
 
           {/* Features Checklist */}
           {docs.features.length > 0 && (
-            <section className="space-y-5 border-t pt-10">
+            <section className="space-y-4 border-t pt-10">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-500">CAPABILITIES</p>
-                <h2 className="mt-1.5 text-3xl font-semibold tracking-tight">Core Features</h2>
+                <h2 className="text-2xl font-semibold tracking-tight">Core features</h2>
               </div>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {docs.features.map((feature) => (
@@ -252,17 +243,17 @@ export default async function ToolPage({ params }: Props) {
 
           {/* Pro Tips */}
           {docs.proTips.length > 0 && (
-            <section className="rounded-3xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8">
+            <section className="rounded-3xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-7">
               <div className="flex items-center gap-3">
-                <div className="grid size-10 place-items-center rounded-2xl bg-sky-500 text-white shadow-md">
-                  <Lightbulb className="size-5" />
+                <div className="grid size-9 place-items-center rounded-xl bg-sky-500 text-white shadow-sm">
+                  <Lightbulb className="size-4" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">Pro Tips for Mac Users</h3>
-                  <p className="text-xs text-muted-foreground">Expert suggestions to maximize efficiency</p>
+                  <h3 className="font-semibold">Tips & shortcuts</h3>
+                  <p className="text-xs text-muted-foreground">Configuration suggestions and keyboard shortcuts</p>
                 </div>
               </div>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-4 space-y-2.5">
                 {docs.proTips.map((tip) => (
                   <li key={tip} className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground">
                     <span className="text-sky-500 font-bold">•</span>
@@ -279,7 +270,7 @@ export default async function ToolPage({ params }: Props) {
               <div className="mb-6 flex items-center justify-between gap-3">
                 <div>
                   <h2 className="text-2xl font-semibold tracking-tight">More in {tool.category.name}</h2>
-                  <p className="text-sm text-muted-foreground">Explore alternative and complementary tools</p>
+                  <p className="text-sm text-muted-foreground">Alternative and related tools in this category</p>
                 </div>
                 <Link href={`/category/${tool.category.slug}`} className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-sky-600 dark:text-sky-400">
                   View all <ArrowRight className="size-4" />
@@ -297,8 +288,8 @@ export default async function ToolPage({ params }: Props) {
         {/* Sidebar */}
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-3xl border bg-card p-6 shadow-sm">
-            <h2 className="font-semibold text-base">At a glance</h2>
-            <dl className="mt-5 space-y-4 text-sm divide-y divide-border/60">
+            <h2 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">Overview</h2>
+            <dl className="mt-4 space-y-3.5 text-sm divide-y divide-border/60">
               <Detail icon={<Laptop />} label="Category" value={tool.category.name} />
               <Detail icon={<ShieldCheck />} label="Difficulty" value={tool.difficulty.toLowerCase()} />
               <Detail icon={<DollarSign />} label="Pricing" value={priceModel} />
@@ -306,28 +297,30 @@ export default async function ToolPage({ params }: Props) {
               <Detail icon={<BadgeCheck />} label="Compatibility" value={tool.compatibility} />
               <Detail icon={<Clock3 />} label="Catalog updated" value={tool.updatedAt.toLocaleDateString("en", { month: "short", year: "numeric" })} />
             </dl>
-          </div>
 
-          <div className="rounded-3xl border bg-card p-6 shadow-sm">
-            <h3 className="font-semibold text-sm">Best for</h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">{docs.bestFor}</p>
-          </div>
+            <div className="mt-5 border-t pt-4">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Best for</h3>
+              <p className="mt-1.5 text-sm leading-6 text-foreground">{docs.bestFor}</p>
+            </div>
 
-          <div className="rounded-3xl border bg-card p-6 shadow-sm">
-            <h3 className="font-semibold text-sm">macOS Integration</h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">{docs.macOSIntegration}</p>
-          </div>
-
-          <div className="rounded-3xl border bg-card p-6 shadow-sm">
-            <h3 className="font-semibold text-sm">Tags & Keywords</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {rawTags.map((tag) => (
-                <span key={tag} className="rounded-full border bg-muted/40 px-3 py-1 text-xs text-muted-foreground">
-                  #{tag}
-                </span>
-              ))}
+            <div className="mt-4 border-t pt-4">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">macOS Integration</h3>
+              <p className="mt-1.5 text-sm leading-6 text-foreground">{docs.macOSIntegration}</p>
             </div>
           </div>
+
+          {rawTags.length > 0 && (
+            <div className="rounded-3xl border bg-card p-6 shadow-sm">
+              <h3 className="font-semibold text-xs uppercase tracking-wider text-muted-foreground">Tags</h3>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {rawTags.map((tag) => (
+                  <span key={tag} className="rounded-full border bg-muted/40 px-2.5 py-0.5 text-xs text-muted-foreground">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </aside>
       </div>
     </div>

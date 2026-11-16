@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { Check, ChevronRight, Copy, Download, RotateCcw, Sparkles } from "lucide-react"
+import { Check, ChevronRight, Copy, Download, RotateCcw } from "lucide-react"
 import { BrandMark } from "@/components/BrandMark"
 import { copyText } from "@/lib/clipboard"
 import { buildSetupScript, type SetupTool } from "@/lib/setup-script"
@@ -62,8 +62,8 @@ export function SetupWizard({ tools }: { tools: Tool[] }) {
       <div className="mb-6 flex items-center gap-2 text-sm font-medium text-muted-foreground"><span className="grid size-6 place-items-center rounded-full bg-sky-500 text-xs text-white">1</span> Choose your workflow</div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{Object.entries(profiles).map(([key, item]) => (
         <button key={key} type="button" onClick={() => choose(key)} className="group rounded-3xl border bg-card p-6 text-left transition hover:-translate-y-1 hover:border-sky-500/40 hover:shadow-xl">
-          <div className="flex items-start justify-between"><Sparkles className="size-5 text-sky-500" /><ChevronRight className="size-5 text-muted-foreground transition group-hover:translate-x-1" /></div>
-          <h2 className="mt-8 text-xl font-semibold">{item.label}</h2>
+          <div className="flex items-start justify-between"><span className="rounded-lg border bg-muted/60 px-2.5 py-1 text-xs font-mono font-medium text-muted-foreground uppercase">{key}</span><ChevronRight className="size-5 text-muted-foreground transition group-hover:translate-x-1" /></div>
+          <h2 className="mt-6 text-xl font-semibold">{item.label}</h2>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
           <p className="mt-4 text-xs font-medium text-sky-500">{item.slugs.filter((slug) => tools.some((tool) => tool.slug === slug)).length} recommended tools</p>
         </button>
@@ -73,7 +73,7 @@ export function SetupWizard({ tools }: { tools: Tool[] }) {
 
   return <div>
     <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-      <div><p className="text-sm font-semibold text-sky-500">YOUR STARTER STACK</p><h2 className="mt-1 text-2xl font-semibold">{profiles[profile].label}</h2></div>
+      <div><p className="text-sm font-semibold text-sky-500">WORKFLOW STACK</p><h2 className="mt-1 text-2xl font-semibold">{profiles[profile].label}</h2></div>
       <button type="button" onClick={() => { setProfile(null); setSelected([]); setCopyStatus("idle") }} className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium hover:bg-muted"><RotateCcw className="size-4" /> Start over</button>
     </div>
     <div className="grid gap-8 lg:grid-cols-[1fr_.9fr]">

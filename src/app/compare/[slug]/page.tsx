@@ -51,7 +51,7 @@ export default async function ComparisonPage({ params }: Props) {
       </div>
     </div>
     <div className="mt-8 grid gap-5 md:grid-cols-2"><Install tool={left} /><Install tool={right} /></div>
-    <section className="mt-8 rounded-3xl border bg-sky-500/5 p-7"><p className="text-xs font-semibold text-sky-500">OUR TAKE</p><h2 className="mt-2 text-2xl font-semibold">The right choice depends on your workflow.</h2><p className="mt-3 leading-7 text-muted-foreground">{item.verdict}</p></section>
+    <section className="mt-8 rounded-3xl border bg-sky-500/5 p-7"><p className="text-xs font-semibold uppercase tracking-wider text-sky-500">Verdict</p><h2 className="mt-2 text-2xl font-semibold">Recommendation</h2><p className="mt-3 leading-7 text-muted-foreground">{item.verdict}</p></section>
   </div>
 }
 
