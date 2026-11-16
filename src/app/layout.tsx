@@ -6,10 +6,10 @@ import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: { default: "MacToolKit — The macOS Developer Toolkit", template: "%s · MacToolKit" },
-  description: "Discover, install, configure, and master every tool for your Mac.",
-  keywords: ["macOS developer tools", "Mac setup", "Homebrew", "developer toolkit", "Mac apps", "MacToolKit"],
-  openGraph: { title: "MacToolKit", description: "Discover, install, configure, and master every tool for your Mac.", type: "website" },
+  title: { default: "Alloy — The macOS Developer Index", template: "%s · Alloy" },
+  description: "A fast, keyboard-first index of verified tools, package managers, and command-line utilities for macOS.",
+  keywords: ["macOS developer tools", "Mac setup", "Homebrew", "CLI utilities", "Alloy", "Mac apps"],
+  openGraph: { title: "Alloy", description: "The macOS developer tool index. Search, inspect, and install with one keystroke.", type: "website" },
   twitter: { card: "summary_large_image" },
   icons: { icon: "/icon.svg" },
 };

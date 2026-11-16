@@ -34,13 +34,19 @@ export function FavoriteButton({ slug, compact = false }: { slug: string; compac
     <button
       type="button"
       onClick={toggle}
-      className={cn("relative z-10 inline-flex items-center justify-center gap-2 rounded-full border bg-background/80 font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-muted", compact ? "size-9" : "h-10 px-4 text-sm")}
-      aria-label={saveError ? "Could not save favorite in this browser" : saved ? "Remove from favorites" : "Save to favorites"}
+      className={cn(
+        "relative z-10 inline-flex items-center justify-center gap-1.5 rounded-lg border font-mono text-xs transition",
+        saved
+          ? "border-amber-500/40 bg-amber-500/10 text-amber-400 font-medium"
+          : "border-border bg-card text-muted-foreground hover:border-zinc-700 hover:text-foreground",
+        compact ? "size-8 p-0" : "h-9 px-3 uppercase tracking-wider"
+      )}
+      aria-label={saveError ? "Could not save favorite in this browser" : saved ? "Remove from saved shortlist" : "Save package to shortlist"}
       aria-pressed={saved}
       title={saveError ? "Could not save in this browser" : undefined}
     >
-      <Heart className={cn("size-4", saved && "fill-rose-500 text-rose-500")} />
-      {!compact && (saveError ? "Save failed" : saved ? "Saved" : "Save tool")}
+      <Heart className={cn("size-3.5", saved && "fill-amber-400 text-amber-400")} />
+      {!compact && (saveError ? "Save error" : saved ? "Saved" : "Save")}
     </button>
   )
 }

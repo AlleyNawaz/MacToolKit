@@ -15,9 +15,9 @@ export function CommandCopy({ command, kind = "command" }: { command: string; ki
 
   if (kind === "manual") {
     return (
-      <div className="rounded-xl border border-white/15 bg-slate-900 p-4">
-        <p className="text-xs font-semibold uppercase tracking-wide text-sky-300">Manual step</p>
-        <p className="mt-2 text-sm leading-6 text-slate-100">{command}</p>
+      <div className="rounded-xl border border-border bg-[#090a0d] p-4">
+        <p className="font-mono text-[11px] font-medium uppercase tracking-wider text-amber-500/90">Manual instruction</p>
+        <p className="mt-2 text-sm leading-6 text-zinc-200">{command}</p>
       </div>
     )
   }
@@ -27,16 +27,25 @@ export function CommandCopy({ command, kind = "command" }: { command: string; ki
   }
 
   return (
-    <div className="rounded-xl border border-white/15 bg-slate-900 p-3 text-slate-100">
-      <div className="mb-2 flex items-center justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-wide text-sky-300">Suggested command</span>
-        <button type="button" onClick={handleCopy} className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-lg border border-white/20 px-3 text-xs font-semibold text-white transition hover:bg-white/10" aria-label="Copy suggested command">
-          {status === "copied" ? <Check className="size-4" /> : <Copy className="size-4" />}
+    <div className="rounded-xl border border-border bg-[#090a0d] p-4 text-zinc-100">
+      <div className="mb-2.5 flex items-center justify-between gap-3">
+        <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-400">Terminal command</span>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 font-mono text-xs font-medium transition ${
+            status === "copied"
+              ? "border-amber-500/50 bg-amber-500/10 text-amber-400"
+              : "border-zinc-700/80 bg-zinc-800/80 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
+          }`}
+          aria-label="Copy terminal command"
+        >
+          {status === "copied" ? <Check className="size-3.5 text-amber-400" /> : <Copy className="size-3.5" />}
           {status === "copied" ? "Copied" : "Copy"}
         </button>
       </div>
-      <code className="block overflow-x-auto whitespace-pre-wrap break-all font-mono text-sm leading-6">{command}</code>
-      {status === "error" && <p role="status" className="mt-2 text-xs text-rose-300">Clipboard unavailable. Select the command to copy it.</p>}
+      <code className="block overflow-x-auto whitespace-pre-wrap break-all font-mono text-sm leading-relaxed text-zinc-200">{command}</code>
+      {status === "error" && <p role="status" className="mt-2 text-xs text-rose-400">Clipboard unavailable. Select command manually.</p>}
     </div>
   )
 }

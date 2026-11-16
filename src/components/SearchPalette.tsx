@@ -113,30 +113,30 @@ export function SearchPalette({ tools, categories }: { tools: SearchTool[]; cate
 
   return (
     <>
-      <button ref={triggerRef} type="button" onClick={() => setOpen(true)} className="flex h-10 w-full items-center gap-2 rounded-xl border bg-card px-3 text-sm text-muted-foreground shadow-sm transition hover:bg-muted md:w-56 lg:w-64" aria-label="Search tools and categories" aria-haspopup="dialog" aria-expanded={open}>
-        <Search className="size-4" />
-        <span className="hidden flex-1 text-left sm:inline">Search the toolkit</span>
-        <kbd className="hidden rounded-md border bg-background px-1.5 py-0.5 font-mono text-[10px] sm:inline">{isMac ? "⌘ K" : "Ctrl K"}</kbd>
+      <button ref={triggerRef} type="button" onClick={() => setOpen(true)} className="flex h-9 w-full items-center gap-2 rounded-lg border border-border bg-card/60 px-2.5 text-xs text-muted-foreground shadow-sm transition hover:border-zinc-700 hover:text-foreground md:w-52 lg:w-60" aria-label="Search tools and categories" aria-haspopup="dialog" aria-expanded={open}>
+        <Search className="size-3.5" />
+        <span className="hidden flex-1 text-left sm:inline">Search Alloy index…</span>
+        <kbd className="hidden rounded border border-border/80 bg-muted/60 px-1.5 py-0.5 font-mono text-[10px] text-zinc-400 sm:inline">{isMac ? "⌘ K" : "Ctrl K"}</kbd>
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[100] flex items-start justify-center bg-slate-950/60 px-3 pt-[8vh] backdrop-blur-sm sm:px-4 sm:pt-[12vh]" onMouseDown={(event) => { if (event.target === event.currentTarget) closeSearch() }}>
-          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Search tools and categories" onKeyDown={trapFocus} className="w-full max-w-2xl overflow-hidden rounded-3xl border bg-background shadow-2xl animate-in fade-in zoom-in-95">
-            <div className="flex items-center gap-3 border-b px-4 sm:px-5">
-              <Search className="size-5 shrink-0 text-muted-foreground" />
-              <input ref={inputRef} value={query} onChange={(event) => { setQuery(event.target.value); setActiveIndex(0) }} onKeyDown={onInputKeyDown} role="combobox" aria-expanded="true" aria-controls="search-results" aria-activedescendant={results[activeIndex] ? `search-result-${activeIndex}` : undefined} aria-label="Search query" className="h-16 min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground" placeholder="Search tools or categories…" />
-              <button type="button" onClick={closeSearch} className="rounded-lg p-2 hover:bg-muted" aria-label="Close search"><X className="size-4" /></button>
+        <div className="fixed inset-0 z-[100] flex items-start justify-center bg-black/70 px-3 pt-[8vh] backdrop-blur-md sm:px-4 sm:pt-[12vh]" onMouseDown={(event) => { if (event.target === event.currentTarget) closeSearch() }}>
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Search tools and categories" onKeyDown={trapFocus} className="w-full max-w-2xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl animate-in fade-in zoom-in-95">
+            <div className="flex items-center gap-3 border-b border-border px-4 sm:px-5">
+              <Search className="size-4 shrink-0 text-muted-foreground" />
+              <input ref={inputRef} value={query} onChange={(event) => { setQuery(event.target.value); setActiveIndex(0) }} onKeyDown={onInputKeyDown} role="combobox" aria-expanded="true" aria-controls="search-results" aria-activedescendant={results[activeIndex] ? `search-result-${activeIndex}` : undefined} aria-label="Search query" className="h-14 min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground" placeholder="Search 244 Mac tools, categories, or commands…" />
+              <button type="button" onClick={closeSearch} className="rounded-md p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground" aria-label="Close search"><X className="size-4" /></button>
             </div>
-            <div id="search-results" role="listbox" aria-label="Search results" className="max-h-[58vh] overflow-y-auto p-3">
-              <p className="px-3 pb-2 pt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{query ? "Results" : "Suggested tools"}</p>
+            <div id="search-results" role="listbox" aria-label="Search results" className="max-h-[58vh] overflow-y-auto p-2">
+              <p className="px-3 pb-2 pt-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{query ? "Matches" : "Quick Access"}</p>
               {results.length ? results.map((item, index) => (
-                <button id={`search-result-${index}`} role="option" aria-selected={index === activeIndex} key={item.path} type="button" onMouseEnter={() => setActiveIndex(index)} onClick={() => go(item.path)} className={`flex w-full items-center gap-3 rounded-2xl p-3 text-left transition ${index === activeIndex ? "bg-muted" : "hover:bg-muted"}`}>
-                  {item.kind === "tool" ? <BrandMark name={item.name} logo={item.logo} className="size-10 rounded-xl text-xs" /> : <Folder className="size-10 shrink-0 rounded-xl bg-muted p-2.5 text-sky-500" />}
-                  <span className="min-w-0 flex-1"><span className="block font-medium">{item.name}</span><span className="block truncate text-xs text-muted-foreground">{item.description}</span></span>
+                <button id={`search-result-${index}`} role="option" aria-selected={index === activeIndex} key={item.path} type="button" onMouseEnter={() => setActiveIndex(index)} onClick={() => go(item.path)} className={`flex w-full items-center gap-3 rounded-lg p-2.5 text-left transition ${index === activeIndex ? "bg-muted text-foreground" : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"}`}>
+                  {item.kind === "tool" ? <BrandMark name={item.name} logo={item.logo} className="size-8 rounded-md text-xs" /> : <Folder className="size-8 shrink-0 rounded-md bg-muted p-2 text-amber-500" />}
+                  <span className="min-w-0 flex-1"><span className="block text-sm font-medium text-foreground">{item.name}</span><span className="block truncate text-xs text-muted-foreground">{item.description}</span></span>
                 </button>
-              )) : <div className="px-3 py-10 text-center text-sm text-muted-foreground">No matches. Try a shorter search.</div>}
+              )) : <div className="px-3 py-10 text-center font-mono text-xs text-muted-foreground">No matching entries found.</div>}
             </div>
-            <div className="flex items-center gap-4 border-t bg-muted/40 px-5 py-3 text-xs text-muted-foreground"><span>↑ ↓ Select</span><span>↵ Open</span><span>esc Close</span><span className="ml-auto hidden items-center gap-1 sm:flex"><Wrench className="size-3" /> {tools.length} tools</span></div>
+            <div className="flex items-center gap-4 border-t border-border bg-muted/30 px-4 py-2.5 font-mono text-[11px] text-muted-foreground"><span>↑↓ Navigate</span><span>↵ Select</span><span>esc Close</span><span className="ml-auto hidden items-center gap-1 sm:flex"><Wrench className="size-3" /> {tools.length} entries</span></div>
           </div>
         </div>
       )}

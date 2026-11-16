@@ -18,7 +18,7 @@ export function PrimaryNav({ mobile = false }: { mobile?: boolean }) {
     <nav className={mobile ? "flex h-10 items-center gap-5 overflow-x-auto whitespace-nowrap border-t px-4 text-xs font-medium text-muted-foreground lg:hidden" : "hidden items-center gap-5 whitespace-nowrap text-sm font-medium text-muted-foreground lg:flex"} aria-label={mobile ? "Mobile navigation" : "Main navigation"}>
       {links.map((link) => {
         const active = link.routes.some((route) => pathname === route || (route.endsWith("/") && pathname.startsWith(route)) || (!route.endsWith("/") && pathname.startsWith(`${route}/`)))
-        return <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} className={`shrink-0 border-b-2 py-2 transition hover:text-foreground ${active ? "border-sky-500 text-foreground" : "border-transparent"}`}>{mobile ? link.mobileLabel : link.label}</Link>
+        return <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} className={`shrink-0 border-b-2 py-2 transition hover:text-foreground ${active ? "border-amber-500 font-semibold text-foreground" : "border-transparent text-muted-foreground"}`}>{mobile ? link.mobileLabel : link.label}</Link>
       })}
     </nav>
   )
