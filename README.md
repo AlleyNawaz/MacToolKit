@@ -1,4 +1,4 @@
-# MacTools Hub
+# MacToolKit
 
 A macOS developer tool catalog with search, categories, comparisons, guides, favorites, and a setup script builder.
 

@@ -15,9 +15,9 @@ export async function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
-        <Link href="/" aria-label="MacTools Hub home" className="mr-auto flex shrink-0 items-center gap-2 font-semibold tracking-tight">
+        <Link href="/" aria-label="MacToolKit home" className="mr-auto flex shrink-0 items-center gap-2 font-semibold tracking-tight">
           <span className="grid size-9 place-items-center rounded-xl bg-foreground text-background"><Command className="size-5" /></span>
-          <span className="hidden sm:inline">MacTools<span className="text-sky-500"> Hub</span></span>
+          <span className="hidden sm:inline">Mac<span className="text-sky-500">ToolKit</span></span>
         </Link>
         <Suspense fallback={null}><PrimaryNav /></Suspense>
         <div className="w-11 sm:w-auto"><SearchPalette tools={tools} categories={categories} /></div>

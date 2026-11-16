@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { prisma } from "@/lib/prisma"
 import { ToolsExplorer } from "@/components/ToolsExplorer"
 
-export const metadata: Metadata = { title: "All macOS developer tools", description: "Browse and search the complete MacTools Hub catalog." }
+export const metadata: Metadata = { title: "All macOS developer tools", description: "Browse and search the complete MacToolKit catalog." }
 
 export default async function ToolsPage() {
   const [tools, categories] = await Promise.all([

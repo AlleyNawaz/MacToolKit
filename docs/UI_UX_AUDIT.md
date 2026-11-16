@@ -1,4 +1,4 @@
-# MacTools Hub: UI, UX, and reliability audit
+# MacToolKit: UI, UX, and reliability audit
 
 ## Scope and method
 
@@ -259,7 +259,7 @@
 - Evidence: the project still carries the create-next-app favicon.
 - Change: add a brand icon based on the site’s command prompt mark.
 - Change: point metadata and manifest at the new icon.
-- Acceptance: browser tabs and installed shortcuts show MacTools branding.
+- Acceptance: browser tabs and installed shortcuts show MacToolKit branding.
 - Status: Implemented.
 
 ## Verification plan

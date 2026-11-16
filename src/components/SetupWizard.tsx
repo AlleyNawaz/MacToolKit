@@ -50,7 +50,7 @@ export function SetupWizard({ tools }: { tools: Tool[] }) {
     const url = URL.createObjectURL(new Blob([script], { type: "text/x-shellscript" }))
     const link = document.createElement("a")
     link.href = url
-    link.download = `mactools-${profile}-setup.sh`
+    link.download = `mactoolkit-${profile}-setup.sh`
     document.body.appendChild(link)
     link.click()
     link.remove()
